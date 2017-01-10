@@ -1,0 +1,66 @@
+﻿@model IEnumerable<PROJECTINVOICE.Models.Company>
+
+@{
+    <link rel="stylesheet" href="~/Content/popup.css" />
+}
+
+<h2>Company</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @Ajax.ActionLink("Create new company", "Create", new { id = 1 },
+    new AjaxOptions
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "popup",
+        InsertionMode = InsertionMode.Replace,
+        OnBegin = "forWindow('block')"
+    },
+    new { @class = "btn btn-default" })
+</p>
+<div id="wrap"></div>
+<div id="popup">
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.cname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.branch)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.branch)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idcompany }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idcompany }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idcompany })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<script type="text/javascript">
+    function forWindow(state){
+        document.getElementById('wrap').style.display = state;
+        document.getElementById('popup').style.display = state;
+    }
+
+</script>

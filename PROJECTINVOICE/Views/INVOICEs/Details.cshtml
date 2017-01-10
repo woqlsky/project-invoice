@@ -1,0 +1,74 @@
+﻿@model PROJECTINVOICE.Models.INVOICE
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>INVOICE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.invoice_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.invoice_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.istatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.istatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company1.cname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company1.cname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostType.typename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostType.typename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property1.pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property1.pname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idinvoice }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

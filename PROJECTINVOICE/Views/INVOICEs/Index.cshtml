@@ -1,0 +1,86 @@
+﻿@model IEnumerable<PROJECTINVOICE.Models.INVOICE>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Invoice</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+    @Ajax.ActionLink("Create new Invoice", "Create", new { id = 1 },
+    new AjaxOptions
+    {
+        HttpMethod = "GET",
+        UpdateTargetId = "popup",
+        InsertionMode = InsertionMode.Replace,
+        OnBegin = "forWindow('block')"
+    },
+    new { @class = "btn btn-default" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.invoice_number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.istatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Company1.cname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostType.typename)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Property1.pname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.invoice_number)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.istatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Company1.cname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostType.typename)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Property1.pname)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idinvoice }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idinvoice }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idinvoice })
+        </td>
+    </tr>
+}
+
+</table>
+
+<script type="text/javascript">
+    function forWindow(state){
+        document.getElementById('wrap').style.display = state;
+        document.getElementById('popup').style.display = state;
+    }
+
+</script>

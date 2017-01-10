@@ -1,0 +1,80 @@
+﻿@model PROJECTINVOICE.Models.INVOICE
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>INVOICE</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.invoice_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.invoice_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.istatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.istatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company1.cname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company1.cname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostType.typename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostType.typename)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Property1.pname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Property1.pname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

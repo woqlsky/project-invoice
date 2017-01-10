@@ -1,0 +1,437 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="miniprojektModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="idcompany" />
+          </Key>
+          <Property Name="idcompany" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="cname" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="branch" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CostType">
+          <Key>
+            <PropertyRef Name="idtype" />
+          </Key>
+          <Property Name="idtype" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typename" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="idinvoice" />
+          </Key>
+          <Property Name="idinvoice" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="invoice_number" Type="int" Nullable="false" />
+          <Property Name="itype" Type="int" />
+          <Property Name="property" Type="int" />
+          <Property Name="company" Type="int" />
+          <Property Name="cost" Type="int" />
+          <Property Name="istatus" Type="varchar" MaxLength="50" />
+          <Property Name="idate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="idproperty" />
+          </Key>
+          <Property Name="idproperty" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="pname" Type="varchar" MaxLength="50" />
+          <Property Name="paddress" Type="varchar" MaxLength="50" />
+          <Property Name="city" Type="varchar" MaxLength="50" />
+          <Property Name="country" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__INVOICE__company__164452B1">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="idcompany" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__itype__182C9B23">
+          <End Role="CostType" Type="Self.CostType" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="idtype" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="itype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__itype__2A4B4B5E">
+          <End Role="CostType" Type="Self.CostType" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="idtype" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="itype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__itype__3C69FB99">
+          <End Role="CostType" Type="Self.CostType" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="idtype" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="itype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__itype__4E88ABD4">
+          <End Role="CostType" Type="Self.CostType" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="idtype" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="itype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__itype__60A75C0F">
+          <End Role="CostType" Type="Self.CostType" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="idtype" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="itype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__itype__66603565">
+          <End Role="CostType" Type="Self.CostType" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="idtype" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="itype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__propert__173876EA">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="idproperty" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="property" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__propert__29572725">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="idproperty" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="property" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__propert__3B75D760">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="idproperty" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="property" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__propert__4D94879B">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="idproperty" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="property" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__propert__5FB337D6">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="idproperty" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="property" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__propert__656C112C">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="idproperty" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="property" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="miniprojektModelStoreContainer">
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CostType" EntityType="Self.CostType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="INVOICE" EntityType="Self.INVOICE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Property" EntityType="Self.Property" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__INVOICE__company__164452B1" Association="Self.FK__INVOICE__company__164452B1">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__itype__182C9B23" Association="Self.FK__INVOICE__itype__182C9B23">
+            <End Role="CostType" EntitySet="CostType" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__itype__2A4B4B5E" Association="Self.FK__INVOICE__itype__2A4B4B5E">
+            <End Role="CostType" EntitySet="CostType" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__itype__3C69FB99" Association="Self.FK__INVOICE__itype__3C69FB99">
+            <End Role="CostType" EntitySet="CostType" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__itype__4E88ABD4" Association="Self.FK__INVOICE__itype__4E88ABD4">
+            <End Role="CostType" EntitySet="CostType" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__itype__60A75C0F" Association="Self.FK__INVOICE__itype__60A75C0F">
+            <End Role="CostType" EntitySet="CostType" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__itype__66603565" Association="Self.FK__INVOICE__itype__66603565">
+            <End Role="CostType" EntitySet="CostType" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__propert__173876EA" Association="Self.FK__INVOICE__propert__173876EA">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__propert__29572725" Association="Self.FK__INVOICE__propert__29572725">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__propert__3B75D760" Association="Self.FK__INVOICE__propert__3B75D760">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__propert__4D94879B" Association="Self.FK__INVOICE__propert__4D94879B">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__propert__5FB337D6" Association="Self.FK__INVOICE__propert__5FB337D6">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__propert__656C112C" Association="Self.FK__INVOICE__propert__656C112C">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="miniprojektModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="idcompany" />
+          </Key>
+          <Property Name="idcompany" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="cname" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="branch" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INVOICE" Relationship="Self.FK__INVOICE__company__164452B1" FromRole="Company" ToRole="INVOICE" />
+        </EntityType>
+        <EntityType Name="CostType">
+          <Key>
+            <PropertyRef Name="idtype" />
+          </Key>
+          <Property Name="idtype" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typename" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INVOICE" Relationship="Self.FK__INVOICE__itype__182C9B23" FromRole="CostType" ToRole="INVOICE" />
+        </EntityType>
+        <EntityType Name="INVOICE">
+          <Key>
+            <PropertyRef Name="idinvoice" />
+          </Key>
+          <Property Name="idinvoice" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="invoice_number" Type="Int32" Nullable="false" />
+          <Property Name="itype" Type="Int32" />
+          <Property Name="property" Type="Int32" />
+          <Property Name="company" Type="Int32" />
+          <Property Name="cost" Type="Int32" />
+          <Property Name="istatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="idate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Company1" Relationship="Self.FK__INVOICE__company__164452B1" FromRole="INVOICE" ToRole="Company" />
+          <NavigationProperty Name="CostType" Relationship="Self.FK__INVOICE__itype__182C9B23" FromRole="INVOICE" ToRole="CostType" />
+          <NavigationProperty Name="Property1" Relationship="Self.FK__INVOICE__propert__173876EA" FromRole="INVOICE" ToRole="Property" />
+        </EntityType>
+        <EntityType Name="Property">
+          <Key>
+            <PropertyRef Name="idproperty" />
+          </Key>
+          <Property Name="idproperty" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="pname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="paddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="country" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="INVOICE" Relationship="Self.FK__INVOICE__propert__173876EA" FromRole="Property" ToRole="INVOICE" />
+        </EntityType>
+        <Association Name="FK__INVOICE__company__164452B1">
+          <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="idcompany" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__itype__182C9B23">
+          <End Role="CostType" Type="Self.CostType" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CostType">
+              <PropertyRef Name="idtype" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="itype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__INVOICE__propert__173876EA">
+          <End Role="Property" Type="Self.Property" Multiplicity="0..1" />
+          <End Role="INVOICE" Type="Self.INVOICE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Property">
+              <PropertyRef Name="idproperty" />
+            </Principal>
+            <Dependent Role="INVOICE">
+              <PropertyRef Name="property" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="miniprojektEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Company" EntityType="Self.Company" />
+          <EntitySet Name="CostType" EntityType="Self.CostType" />
+          <EntitySet Name="INVOICE" EntityType="Self.INVOICE" />
+          <EntitySet Name="Property" EntityType="Self.Property" />
+          <AssociationSet Name="FK__INVOICE__company__164452B1" Association="Self.FK__INVOICE__company__164452B1">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__itype__182C9B23" Association="Self.FK__INVOICE__itype__182C9B23">
+            <End Role="CostType" EntitySet="CostType" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__INVOICE__propert__173876EA" Association="Self.FK__INVOICE__propert__173876EA">
+            <End Role="Property" EntitySet="Property" />
+            <End Role="INVOICE" EntitySet="INVOICE" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="miniprojektModelStoreContainer" CdmEntityContainer="miniprojektEntities">
+          <EntitySetMapping Name="Company">
+            <EntityTypeMapping TypeName="miniprojektModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="idcompany" ColumnName="idcompany" />
+                <ScalarProperty Name="cname" ColumnName="cname" />
+                <ScalarProperty Name="branch" ColumnName="branch" />
+                <ScalarProperty Name="city" ColumnName="city" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CostType">
+            <EntityTypeMapping TypeName="miniprojektModel.CostType">
+              <MappingFragment StoreEntitySet="CostType">
+                <ScalarProperty Name="idtype" ColumnName="idtype" />
+                <ScalarProperty Name="typename" ColumnName="typename" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="INVOICE">
+            <EntityTypeMapping TypeName="miniprojektModel.INVOICE">
+              <MappingFragment StoreEntitySet="INVOICE">
+                <ScalarProperty Name="idinvoice" ColumnName="idinvoice" />
+                <ScalarProperty Name="invoice_number" ColumnName="invoice_number" />
+                <ScalarProperty Name="itype" ColumnName="itype" />
+                <ScalarProperty Name="property" ColumnName="property" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="cost" ColumnName="cost" />
+                <ScalarProperty Name="istatus" ColumnName="istatus" />
+                <ScalarProperty Name="idate" ColumnName="idate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Property">
+            <EntityTypeMapping TypeName="miniprojektModel.Property">
+              <MappingFragment StoreEntitySet="Property">
+                <ScalarProperty Name="idproperty" ColumnName="idproperty" />
+                <ScalarProperty Name="pname" ColumnName="pname" />
+                <ScalarProperty Name="paddress" ColumnName="paddress" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
